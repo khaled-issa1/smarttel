@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_tel/backend/BackendHelper.dart';
 import 'package:smart_tel/pages/DeviceControl1.dart';
 import 'package:smart_tel/pages/DeviceControl2.dart';
 import 'package:smart_tel/pages/DeviceControl3.dart';
-import 'package:smart_tel/serv/NavService.dart';
 import 'package:smart_tel/serv/ProviderHelper.dart';
 
 class BottomPage1 extends StatelessWidget {
@@ -18,42 +16,39 @@ class BottomPage1 extends StatelessWidget {
            return SingleChildScrollView(
              child: Column(
                children: [
-
                  Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
                      Padding(
                        padding: const EdgeInsets.all(12.0),
                        child: Container(
-                         child: Text('Device'),
+                         child: const Text('Device'),
                        ),
                      ),
 
-                     SizedBox(width: 15,),
+                     const SizedBox(width: 15,),
 
-                     Text(
+                     const Text(
                          'Name'
                      ),
-                     SizedBox(width: 30,),
+                     const SizedBox(width: 30,),
 
-                     Text(
+                     const Text(
                          'ID'
                      ),
-                     SizedBox(width: 30,),
+                     const SizedBox(width: 30,),
 
-                     Text(
+                     const Text(
                          'Ch No'
                      ),
-                     SizedBox(width: 10,),
+                     const SizedBox(width: 10,),
 
-                     Text(
-                         'Company'
-                     ),
+
                    ],
 
 
                  ),
-                 Divider(
+                 const Divider(
                    thickness: 3,
                  ),
 
@@ -63,7 +58,7 @@ class BottomPage1 extends StatelessWidget {
 
                      itemCount: mm.avd.length,
                      separatorBuilder: (context,i){
-                       return Divider(thickness: 3,);
+                       return const Divider(thickness: 3,);
                      },
 
                      itemBuilder: (context,i){
@@ -72,16 +67,21 @@ class BottomPage1 extends StatelessWidget {
                            padding: const EdgeInsets.only(left: 3,bottom: 8,right: 20),
                            child: InkWell(
                              onTap: ()async{
+                               List s=[false,false,false];
 
                                if(mm.avd[i].ch.length==1){
-                                 bool? s =await BackendHelper.backendHelper.deviceStatus(mm.avd[i].link.toString());
-                                 Navigator.of(context).pushNamed(DeviceControl1.routeName,arguments: [mm.avd[i],s]);
+
+                                 s =await BackendHelper.backendHelper.deviceStatus(mm.avd[i].link.toString());
+
+                                 Navigator.of(context).pushNamed(DeviceControl1.routeName,arguments: [mm.avd[i],s[0]]);
                                }else if(mm.avd[i].ch.length==2){
-                                 List<bool> s=await BackendHelper.backendHelper.deviceStatus2(mm.avd[i].link.toString());
+                                  s=await BackendHelper.backendHelper.deviceStatus(mm.avd[i].link.toString());
+
                                  Navigator.of(context).pushNamed(DeviceControl2.routeName,arguments: [mm.avd[i],s[0],s[1]]);
 
                                }else if(mm.avd[i].ch.length==3){
-                                 List<bool> s=await BackendHelper.backendHelper.deviceStatus2(mm.avd[i].link.toString());
+                                 dynamic s=await BackendHelper.backendHelper.deviceStatus(mm.avd[i].link.toString());
+
                                  Navigator.of(context).pushNamed(DeviceControl3.routeName,arguments: [mm.avd[i],s[0],s[1],s[2]]);
 
                                }
@@ -96,7 +96,7 @@ class BottomPage1 extends StatelessWidget {
                                      height: 40,
                                      decoration: BoxDecoration(
                                          borderRadius: BorderRadius.circular(20),
-                                         image: DecorationImage(image: AssetImage('images/ic2.png'))
+                                         image: const DecorationImage(image: AssetImage('images/ic2.png'))
                                      ),),
                                  ),
 
@@ -122,15 +122,6 @@ class BottomPage1 extends StatelessWidget {
                                        ),
                                      ],
                                    ),
-
-
-                                   Stack(
-                                     children: [
-                                       Positioned(child: Text(mm.avd[i].company.toString())
-                                       ),
-                                     ],
-                                   ),
-
 
                                  ]
                              ),

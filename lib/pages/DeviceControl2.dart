@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:smart_tel/backend/BackendHelper.dart';
@@ -7,7 +7,7 @@ import 'package:smart_tel/customWidgets/Device.dart';
 
 class DeviceControl2 extends StatefulWidget {
   static String routeName='DeviceControl2';
-  Device? device;
+  dDevice? device;
   bool? sw1;
   bool? sw2;
 
@@ -22,13 +22,13 @@ class _DeviceControl2State extends State<DeviceControl2> {
   @override
   Widget build(BuildContext context) {
 
-    return widget.sw2==null?Scaffold(body: Center(child: CircularProgressIndicator())):Scaffold(
-        appBar: AppBar(title: Text(widget.device!.name.toString()+' Device'),centerTitle: true,backgroundColor: Color(0xff0e3d7d),),
+    return widget.sw2==null?const Scaffold(body: Center(child: CircularProgressIndicator())):Scaffold(
+        appBar: AppBar(title: Text(widget.device!.name.toString()+' Device'),centerTitle: true,backgroundColor: const Color(0xff0e3d7d),),
         body: SingleChildScrollView(
           child: Column(
             children: [
 
-              SizedBox(height: 50,),
+              const SizedBox(height: 50,),
 
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -36,21 +36,21 @@ class _DeviceControl2State extends State<DeviceControl2> {
                   shape: Border.all(color: Colors.black),
                   child: Column(children: [
 
-                    SizedBox(height: 5,),
+                    const SizedBox(height: 5,),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text('Name'),
+                      children: const [
+                         Text('Name'),
 
                         Text('ID'),
 
-                        Text('Company'),
+                         Text('Company'),
                       ],
 
 
                     ),
-                    Divider(color: Colors.black,),
+                    const Divider(color: Colors.black,),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -63,10 +63,10 @@ class _DeviceControl2State extends State<DeviceControl2> {
                       ],
 
                     ),
-                    SizedBox(height: 7,)
+                    const SizedBox(height: 7,)
                   ],),),
               ),
-              SizedBox(height: 40,),
+              const SizedBox(height: 40,),
 
 
 
@@ -75,7 +75,7 @@ class _DeviceControl2State extends State<DeviceControl2> {
                 children: [
                   Text(widget.device!.ch[0].toString()),
                   FlutterSwitch(
-                    duration: Duration(milliseconds: 1000),
+                    duration: const Duration(milliseconds: 1000),
                     activeColor: Colors.green,
                     inactiveColor: Colors.red,
                     activeTextFontWeight: FontWeight.bold,
@@ -88,12 +88,7 @@ class _DeviceControl2State extends State<DeviceControl2> {
                       widget.sw1=val;
                       await BackendHelper.backendHelper.deviceControl1(widget.device!.link.toString(),
                           {
-                            "deviceid": widget.device!.id,
-                            "data": {
-                              "switches": [
-                                {"switch": widget.sw1==true?"on":"off","outlet":1},
-                                {"switch": widget.sw2==true?"on":"off","outlet":2},]
-                            }
+                            'ch':[widget.sw1,widget.sw2]
                           }   );
                       setState(() {
 
@@ -106,14 +101,14 @@ class _DeviceControl2State extends State<DeviceControl2> {
                 ],),
 
 
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(widget.device!.ch[1].toString()),
                   FlutterSwitch(
-                    duration: Duration(milliseconds: 1000),
+                    duration: const Duration(milliseconds: 1000),
                     activeColor: Colors.green,
                     inactiveColor: Colors.red,
                     activeTextFontWeight: FontWeight.bold,
@@ -126,13 +121,7 @@ class _DeviceControl2State extends State<DeviceControl2> {
                       widget.sw2=val;
                       await BackendHelper.backendHelper.deviceControl1(widget.device!.link.toString(),
                           {
-                            "deviceid": widget.device!.id,
-                            "data": {
-                              "switches": [
-                                {"switch": widget.sw1==true?"on":"off","outlet":1},
-                                {"switch": widget.sw2==true?"on":"off","outlet":2},
-                                ]
-                            }
+                            'ch':[widget.sw1,widget.sw2]
                           }   );
                       setState(() {
 
@@ -147,14 +136,14 @@ class _DeviceControl2State extends State<DeviceControl2> {
 
 
 
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
 
 
 
               Container(
                   width: double.infinity,
                   height: 250,
-                  child: Image(image: AssetImage('images/logo.png'),fit: BoxFit.fill,))
+                  child: const Image(image:  AssetImage('images/logo.png'),fit: BoxFit.fill,))
             ],
 
 

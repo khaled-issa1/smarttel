@@ -4,7 +4,7 @@ import 'package:smart_tel/customWidgets/Device.dart';
 
 class ProviderHelper extends ChangeNotifier{
 
-  List<Device> avd=[];
+  List<dDevice> avd=[];
 
 
    avilableDevices()async{
@@ -12,14 +12,14 @@ class ProviderHelper extends ChangeNotifier{
     notifyListeners();
   }
 
-  adDevice(Device dv)async{
+  adDevice(dDevice dv)async{
     String? x;
     x=await BackendHelper.backendHelper.addDevice(dv);
     avilableDevices();
     return x;
   }
 
-  Future<String?> deDevice(Device d)async{
+  Future<String?> deDevice(dDevice d)async{
     String? x;
     x=await BackendHelper.backendHelper.delDevice(d);
     avilableDevices();

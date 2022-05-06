@@ -21,6 +21,12 @@ dependencies:
   string_validator: ^0.3.0
   url_launcher: ^6.0.20
   connectivity_plus: ^2.2.1
+  firebase_auth: ^3.3.14
+  firebase_core: ^1.14.1
+  convex_bottom_bar: ^3.0.0
+  shared_preferences: ^2.0.13
+  arp_scanner: ^1.2.7
+
 
 
 dev_dependencies:

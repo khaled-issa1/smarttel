@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 class NavServices{
 
-  late GlobalKey<NavigatorState> navkey;
+  GlobalKey<NavigatorState> pageNavKey=GlobalKey<NavigatorState>();
 
   NavServices._(){
-    navkey=GlobalKey<NavigatorState>();
+    pageNavKey=GlobalKey<NavigatorState>();
   }
 
   static NavServices navServices=NavServices._();
 
   NavRep(String x){
-    navkey.currentState?.pushReplacementNamed(x);
+    pageNavKey.currentState?.pushReplacementNamed(x);
   }
 
   NavPush(String x){
-    navkey.currentState?.pushNamed(x);
+    pageNavKey.currentState?.pushNamed(x);
   }
 
 

@@ -7,30 +7,44 @@ class ContactUs extends StatelessWidget {
   static String routeName='ContactUs';
   GlobalKey<ScaffoldState> skey=GlobalKey<ScaffoldState>();
   GlobalKey<FormState> fkey=GlobalKey<FormState>();
-  String? n; String? e; String? m;
+  String? n; String? e; String? m='';
 
-  launchURL() async {
-    const url = 'https://www.google.com/';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
+
+  _contactus(String sub, String mess) async {
+    String? encodeQueryParameters(Map<String, String> params) {
+      return params.entries
+          .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+          .join('&');
     }
-  }
-  launchEmail() async {
-    launch(
-        "mailto:khaledissa120@gmail.com?subject=EmailSubject&body=Write how we can help you");
+    final Uri launchUri = Uri(
+      scheme: 'mailto',
+      path: 'ia44333@gmail.com',
+      query: encodeQueryParameters(<String, String>{
+        'subject': sub ,
+        'body': mess
+      }),
+    );
+    await launchUrl(launchUri);
+
+
   }
 
-  makeCall()async{
-    launch("tel:<+201016663555>");
-  }
+
+    _makecall() async {
+      final Uri launchUri = Uri(
+        scheme: 'tel',
+        path: '+201016663555',
+      );
+      await launchUrl(launchUri);
+    }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: skey,
       drawer: AppDrawer(),
-      appBar: AppBar(title: Text('Contact Us'),centerTitle: true,backgroundColor: Color(0xff0e3d7d),),
+      appBar: AppBar(title: const Text('Contact Us'),centerTitle: true,backgroundColor: const Color(0xff0e3d7d),),
       body: Form(
         key: fkey,
         child: SingleChildScrollView(
@@ -39,7 +53,7 @@ class ContactUs extends StatelessWidget {
             children: [
 
 
-              SizedBox(height: 60,),
+              const SizedBox(height: 60,),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -51,13 +65,12 @@ class ContactUs extends StatelessWidget {
 
                     else{return null;}
                   },
-                  decoration: InputDecoration(
-                    labelText: 'Name',
-
+                  decoration: const InputDecoration(
+                    labelText: 'Subject',
                   ),
                 ),
               ),
-              SizedBox(height: 24,),
+              const SizedBox(height: 24,),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -69,24 +82,24 @@ class ContactUs extends StatelessWidget {
 
                     else{return null;}
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Email',
 
                   ),
                 ),
               ),
 
-              SizedBox(height: 24,),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              const SizedBox(height: 24,),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text('Message',
                   style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14),),
               ),
 
-              SizedBox(height: 24,),
+              const SizedBox(height: 24,),
 
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: Card(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
 
@@ -96,10 +109,9 @@ class ContactUs extends StatelessWidget {
                       m=x;
                     },
                     validator: (value){
-                      String x= value!=null? value : '';
                       return null;
                     },
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Type Here',
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
@@ -112,14 +124,14 @@ class ContactUs extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
 
               Container(
                   width: double.infinity,
-                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color(0xff0e3d7d),
+                    color: const Color(0xff0e3d7d),
 
                   ),
 
@@ -127,57 +139,57 @@ class ContactUs extends StatelessWidget {
 
                     if(fkey.currentState!.validate()){
                       fkey.currentState!.save();
-                      await launch("mailto:khaledissa120@gmail.com?subject=${e}&body=${m}");
+                      await _contactus('$n', '$m');
 
                     }
 
 
                   },
 
-                      child: Text('Send Message',style: TextStyle(
+                      child: const Text('Send Message',style:  TextStyle(
                           color: Colors.white
                       ),))),
 
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text('Get in Touch',
                   style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14),),
               ),
 
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
 
               InkWell(
                 onTap: (){
-                  makeCall();
+                  _makecall();
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
-                    children: [
-                      Icon(Icons.call),SizedBox(width: 5,), Text('+201016663555'),
+                    children: const [
+                       Icon(Icons.call), SizedBox(width: 5,),  Text('+201016663555'),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 6,),
+              const SizedBox(height: 6,),
 
               InkWell(
                 onTap: (){
-                  launchEmail();
+                  _contactus('subject','Type your message here');
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
-                    children: [
-                      Icon(Icons.email),SizedBox(width: 5,), Text('khaledissa120@gmail.com'),
+                    children: const [
+                       Icon(Icons.email), SizedBox(width: 5,),  Text('ia44333@gmail.com'),
                     ],
                   ),
                 ),
               ),
 
-              SizedBox(height: 100,),
+              const SizedBox(height: 100,),
 
             ],
           ),

@@ -5,6 +5,7 @@ import 'package:smart_tel/customWidgets/DrawerMenuScreen.dart';
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return ZoomDrawer(
 
 
@@ -13,7 +14,7 @@ class AppDrawer extends StatelessWidget {
       mainScreen: Container(
         height: 250,
         width: 288,
-        color: Color(0xff0e3d7d),
+        color: const Color(0xff0e3d7d),
         child: Stack(
             children: [Positioned(
               top: 70,
@@ -23,7 +24,7 @@ class AppDrawer extends StatelessWidget {
                 width: 145,
                 height: 145,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),
-                    image: DecorationImage(image: AssetImage('images/logo.png'))),
+                    image: const DecorationImage(image:  AssetImage('images/logo.png'))),
               ),
             ),]
         ),
@@ -32,7 +33,7 @@ class AppDrawer extends StatelessWidget {
       borderRadius: 24.0,
       showShadow: true,
       angle: -12.0,
-      backgroundColor: Color(0xff0e3d7d),
+      backgroundColor: const Color(0xff0e3d7d),
       slideWidth: MediaQuery.of(context).size.width*.65,
       openCurve: Curves.fastOutSlowIn,
       closeCurve: Curves.bounceIn,

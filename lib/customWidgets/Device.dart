@@ -1,13 +1,13 @@
-class Device{
+class dDevice{
   String? name;
   String? id;
   String? link;
   List<dynamic> ch=[];
   String? company;
 
-  Device({this.name,this.id,this.link,required this.ch,this.company});
+  dDevice({this.name,this.id,this.link,required this.ch,this.company});
 
-  toMap(Device d){
+  toMap(dDevice d){
     return {
       'name':d.name,
       'id':d.id,
@@ -18,12 +18,12 @@ class Device{
 
   }
 
-  Device.fromJson(Map m){
-    this.name=m['name'];
-    this.id=m['id'];
-    this.link=m['link'];
-    this.ch=m['ch'];
-    this.company=m['company'];
+  dDevice.fromJson(Map m){
+    name=m['name'];
+    id=m['id'];
+    link=m['link'];
+    ch=m['ch'];
+    company=m['company'];
 
   }
 

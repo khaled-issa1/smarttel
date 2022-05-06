@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "747443504026",
+    "firebase_url": "https://smart-tel-482a5-default-rtdb.firebaseio.com",
+    "project_id": "smart-tel-482a5",
+    "storage_bucket": "smart-tel-482a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747443504026:android:85caf81f9d13e4c2677023",
+        "android_client_info": {
+          "package_name": "kh.smart_tel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747443504026-lg5earrf780do7i1huof5vqihl6qnbjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsAItYJ6H60sQR9YOdHZILW_2f7T5XNAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747443504026-lg5earrf780do7i1huof5vqihl6qnbjn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "747443504026-8ph5fgqdnaqljtpf7dfj8hu5ia876f22.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "a"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

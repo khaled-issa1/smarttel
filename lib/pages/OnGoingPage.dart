@@ -1,12 +1,13 @@
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_tel/pages/ErrorConnection.dart';
 import 'package:smart_tel/pages/HomePage.dart';
+import 'package:smart_tel/pages/LoginPage.dart';
 import 'package:smart_tel/serv/NavService.dart';
 import 'package:smart_tel/serv/ProviderHelper.dart';
+import 'package:smart_tel/serv/SPHelper.dart';
 
 
 class OnGoingPage extends StatelessWidget {
@@ -22,7 +23,7 @@ class OnGoingPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 
-          SizedBox(height: 100,),
+          const SizedBox(height: 100,),
 
 
           CarouselSlider(
@@ -34,7 +35,7 @@ class OnGoingPage extends StatelessWidget {
                   width: w,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('images/logo.png'),
                       fit: BoxFit.fill,
 
@@ -46,8 +47,8 @@ class OnGoingPage extends StatelessWidget {
                   height: h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    image: DecorationImage(
-                      image: AssetImage('images/sh2.jpg'),
+                    image: const DecorationImage(
+                      image:  AssetImage('images/sh2.jpg'),
                       fit: BoxFit.fill,
 
                     ),
@@ -59,7 +60,7 @@ class OnGoingPage extends StatelessWidget {
                   height: h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('images/back1.jpg'),
                       fit: BoxFit.fill,
 
@@ -71,7 +72,7 @@ class OnGoingPage extends StatelessWidget {
                   height: h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('images/headphone.jpg'),
                       fit: BoxFit.fill,
 
@@ -88,8 +89,8 @@ class OnGoingPage extends StatelessWidget {
                 enableInfiniteScroll: true,
                 reverse: false,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 3),
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayInterval: const Duration(seconds: 3),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 autoPlayCurve: Curves.fastOutSlowIn,
                 enlargeCenterPage: true,
 
@@ -100,43 +101,48 @@ class OnGoingPage extends StatelessWidget {
 
 
 
-          SizedBox(height: 50,),
+          const SizedBox(height: 50,),
 
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: 20),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
 
-            child: Text(
+            child: const Text(
               'Welcome in Smart Tel app \n\n',
 
               textAlign: TextAlign.center,
-              style: TextStyle(color:Color(0xff0e3d7d),
+              style:  TextStyle(color: Color(0xff0e3d7d),
                   fontSize: 16,
                   fontWeight: FontWeight.bold
               ),
 
             ),),
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
 
           Container(
 
             width: double.infinity,
 
-            margin: EdgeInsets.symmetric(vertical: 50
+            margin: const EdgeInsets.symmetric(vertical: 50
                 ,horizontal: 30),
 
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-              color: Color(0xffd9d9d9),
+              color: const Color(0xffd9d9d9),
             ),
             child: TextButton(
-              child: Text('Next',
+              child: const Text('Next',
                 style: TextStyle(color: Color(0xff0e3d7d)),
               ),
+
               onPressed: ()async{
+                bool? ss=await SPHelper.spHelper.isAuth();
                 var connectivityResult = await (Connectivity().checkConnectivity());
                 if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi ) {
-                  Provider.of<ProviderHelper>(context,listen:false).avilableDevices();
-                  NavServices.navServices.NavPush(HomePage.routeName);
+                  if(ss==true){
+                    Provider.of<ProviderHelper>(context,listen:false).avilableDevices();
+                    NavServices.navServices.NavRep(HomePage.routeName);
+                  }else {NavServices.navServices.NavPush(LoginPage.routeName);}
+
                 } else  {
                   NavServices.navServices.NavRep(ErrorConnection.routeName);
 

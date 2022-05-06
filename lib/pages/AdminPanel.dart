@@ -18,10 +18,10 @@ class AdminPanel extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                   height: 250,
-                  child: Image(image: AssetImage('images/logo.png'),fit: BoxFit.fill,)),
+                  child: const Image(image: AssetImage('images/logo.png'),fit: BoxFit.fill,)),
             ),
 
-            SizedBox(height: 50,),
+            const SizedBox(height: 50,),
 
             
             InkWell(
@@ -29,14 +29,14 @@ class AdminPanel extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 height: 100,
-                margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
                 child: Card(
-                  color:  Color(0xff0e3d7d),
+                  color:  const Color(0xff0e3d7d),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                   child:Row(
-                    children: [
-                      Image(image: AssetImage('images/ic2.png'),color: Colors.white,)
-                      ,Text('Add New Device to app',style:
+                    children: const [
+                       Image(image: AssetImage('images/ic2.png'),color: Colors.white,)
+                      , Text('Add New Device to app',style:
                       TextStyle(color: Colors.white,fontWeight: FontWeight.w500
                       ),)],
                   )
@@ -51,14 +51,14 @@ class AdminPanel extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 height: 100,
-                margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
                 child: Card(
-                    color:  Color(0xff0e3d7d),
+                    color:  const Color(0xff0e3d7d),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                     child:Row(
-                      children: [
-                        Image(image: AssetImage('images/ic2.png'),color: Colors.white,)
-                        ,Text('Delete Device from app',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),)],
+                      children: const [
+                         Image(image: AssetImage('images/ic2.png'),color: Colors.white,)
+                        , Text('Delete Device from app',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),)],
                     )
 
                 ),
@@ -70,14 +70,14 @@ class AdminPanel extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 height: 100,
-                margin: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
                 child: Card(
-                    color:  Color(0xff0e3d7d),
+                    color:  const Color(0xff0e3d7d),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                     child:Row(
-                      children: [
-                        Image(image: AssetImage('images/ic2.png'),color: Colors.white,)
-                        ,Text('Return to Home Page',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),)],
+                      children: const [
+                         Image(image: AssetImage('images/ic2.png'),color: Colors.white,)
+                        , Text('Return to Home Page',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),)],
                     )
 
                 ),

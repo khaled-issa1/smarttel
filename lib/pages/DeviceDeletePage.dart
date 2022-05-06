@@ -10,17 +10,17 @@ class DeviceDeletePage extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(title: Text('Delete Device',),centerTitle: true,backgroundColor: Color(0xff0e3d7d),),
+      appBar: AppBar(title: const Text('Delete Device',),centerTitle: true,backgroundColor: const Color(0xff0e3d7d),),
       body: Consumer<ProviderHelper>(
         builder: (context,m,w){
 
           return ListView.builder(itemBuilder: (context,i){
             return ListTile(
-              leading: Image(image: AssetImage('images/ic2.png')),
+              leading: const Image(image:  AssetImage('images/ic2.png')),
 
               title: Text(m.avd[i].name.toString()),
-              subtitle: Text(m.avd[i].link.toString()),
-              trailing: IconButton(icon: Icon(Icons.delete),
+              subtitle: Text(m.avd[i].id.toString()),
+              trailing: IconButton(icon: const Icon(Icons.delete),
                 onPressed: ()async{
                 String? s=await Provider.of<ProviderHelper>(context,listen:false).deDevice(m.avd[i]);
                 if(s==null){
@@ -28,9 +28,9 @@ class DeviceDeletePage extends StatelessWidget {
                 }
                 else{
                   ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('$s',style: TextStyle(color: Colors.white),),
-                        backgroundColor: Color(0xff0e3d7d),
-                        duration: Duration(seconds: 9),
+                      SnackBar(content: Text('$s',style: const TextStyle(color: Colors.white),),
+                        backgroundColor: const Color(0xff0e3d7d),
+                        duration: const Duration(seconds: 9),
                       ));
                 }
                 },

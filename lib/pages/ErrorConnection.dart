@@ -17,36 +17,35 @@ class ErrorConnection extends StatelessWidget {
         children: [
          Container(width: double.infinity,),
 
-          SizedBox(height: 180,),
+          const SizedBox(height: 180,),
 
 
           Stack(
-            children: [
-              Positioned(child: Icon(Icons.wifi,size: 150,color: Colors.grey,)),
-              Positioned(left:45,top: 40
-                ,child: Icon(Icons.close,size: 65,color: Colors.red,),)
+            children: const [
+               Positioned(child: Icon(Icons.wifi,size: 150,color: Colors.grey,)),
+               Positioned(left:45,top: 40
+                ,child:  Icon(Icons.close,size: 65,color: Colors.red,),)
             ],
           ),
 
 
 
-          SizedBox(height: 40,),
-          Text('Network Connection Failed!'),
-          Text('Please check your connection then retry'),
+          const SizedBox(height: 40,),
+          const Text('Network Connection Failed!'),
+          const Text('Please check your connection then retry'),
 
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           IconButton(onPressed: ()async{
             var connectivityResult = await (Connectivity().checkConnectivity());
             if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi ) {
-              Provider.of<ProviderHelper>(context,listen:false).avilableDevices();
-              NavServices.navServices.NavRep(HomePage.routeName);
+              NavServices.navServices.NavRep(OnGoingPage.routeName);
             } else  {
               NavServices.navServices.NavRep(ErrorConnection.routeName);
 
 
             }
 
-          }, icon:Icon(Icons.refresh,size: 40,color: Colors.green,)),
+          }, icon:const Icon(Icons.refresh,size: 40,color: Colors.green,)),
         ],
       ),
     );
